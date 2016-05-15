@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+	<p:growl id="growl" showDetail="true" />
+
+	<div class="ui-grid ui-grid-responsive">
+		<div class="ui-grid-row">
+			<div class="ui-grid-col-6">
+				<!-- Grafico da Curva ABC -->
+				<p:panel header="Curva ABC">
+					<p:chart type="pie" model="#{curvaAbcController.pieModel}"
+						style="height:300px">
+					</p:chart>
+				</p:panel>
+			</div>
+
+			<div class="ui-grid-col-6">
+				<!-- Grafico dos Indicadores -->
+				<p:panel header="Indicadores">
+					<p:chart type="metergauge"
+						model="#{indicadorController.meterGaugeModel}"
+						style=";height:300px">
+					</p:chart>
+				</p:panel>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui-grid ui-grid-responsive">
+		<div class="ui-grid-row">
+			<div class="ui-grid-col-12">
+				<p:panel header="Relatório Mensal">
+					<p:chart type="line" model="#{relatorioController.lineModel}"
+						style="height:300px;" />
+				</p:panel>
+			</div>
+		</div>
+	</div>
+
+
+	<h:form>
+		<div style="float: left;">
+			<h:panelGrid style="position: relative">
+				<!-- Grafico da Curva ABC -->
+				<p:panel header="Curva ABC" style="float: left">
+					<p:chart type="pie" model="#{curvaAbcController.pieModel}"
+						style="width:450px;height:300px">
+					</p:chart>
+				</p:panel>
+			</h:panelGrid>
+		</div>
+
+		<div style="float: right;">
+			<h:panelGrid>
+				<!-- Grafico dos Indicadores -->
+				<p:panel header="Indicadores" style="float: right;">
+					<p:chart type="metergauge"
+						model="#{indicadorController.meterGaugeModel}"
+						style="width:450px;height:300px">
+					</p:chart>
+				</p:panel>
+			</h:panelGrid>
+		</div>
+
+		<div align="center">
+
+			<h:panelGrid style="width:90%">
+				<br />
+				<!--Grafico do Relatorio Mensal -->
+				<p:panel header="Relatório Mensal">
+					<p:chart type="line" model="#{relatorioController.lineModel}"
+						style="height:300px;" />
+				</p:panel>
+			</h:panelGrid>
+
+		</div>
+	</h:form>
+</ui:composition>
+</html>
