@@ -1,12 +1,13 @@
 package controller;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
@@ -53,7 +54,7 @@ public class RelatorioController implements Serializable {
 
 		LineChartSeries series = new LineChartSeries();
 		series.setLabel("Consumo");
-
+		
 		RelatorioDAO relatorioDAO = new RelatorioDAO();
 		List<Relatorio> lista = relatorioDAO.gerarRelatorio();
 		for (Relatorio r : lista) {
