@@ -2,19 +2,22 @@ package conexao;
 
 import java.util.List;
 
-import controller.RelatorioController;
 import dao.MaterialDAO;
 import dao.RelatorioDAO;
+import dao.IndicadorDAO;
+import dao.Curva_AbcDAO;
 import model.Material;
 import model.Relatorio;
+import model.Indicador;
+import model.CurvaAbc;
 
 public class teste {
 
 	public static void main(String[] args) {
-		//RelatorioController relatorioController = new RelatorioController();
-		//relatorioController.initCategoryModel();
-		testGerarRelatorio();
-		// testBuscarTodos();
+		//testGerarIndicador();
+		//testGerarRelatorio();
+		testGerarCurvaAbc();
+		//testBuscarTodos();
 
 	}
 
@@ -29,8 +32,24 @@ public class teste {
 	private static void testGerarRelatorio() {
 		RelatorioDAO relatorioDAO = new RelatorioDAO();
 		List<Relatorio> lista = relatorioDAO.gerarRelatorio();
-		for (Relatorio m : lista) {
-			System.out.println(m);
+		for (Relatorio r : lista) {
+			System.out.println(r);
+		}
+	}
+	
+	private static void testGerarIndicador() {
+		IndicadorDAO indicadorDAO = new IndicadorDAO();
+		List<Indicador> lista = indicadorDAO.gerarIndicador();
+		for (Indicador i : lista) {
+			System.out.println(i);
+		}
+	}
+	
+	private static void testGerarCurvaAbc() {
+		Curva_AbcDAO curvaAbcDAO = new Curva_AbcDAO();
+		List<CurvaAbc> lista = curvaAbcDAO.gerarCurvaAbc();
+		for (CurvaAbc c : lista) {
+			System.out.println(c);
 		}
 	}
 }

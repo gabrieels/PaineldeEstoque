@@ -1,8 +1,8 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
+import javax.persistence.*;
 
 /**
  * The persistent class for the tb_relatorio database table.
@@ -21,51 +21,35 @@ public class Relatorio implements Serializable {
 
 	@Column(name = "id_material")
 	private Integer idMaterial;
-	
-	@Column(name = "in_qnt_saida")
-	private Integer qnt_saida;
-
-	@Column(name = "db_preco_medio")
-	private Double precoMedio;
 
 	@Column(name = "cv_descricao")
 	private String descricao;
 
-	@Column(name = "dt_mes_saida")
-	private String mes_saida;
+	@Column(name = "db_preco_medio")
+	private Double precoMedio;
+
+	@Column(name = "dt_saida")
+	private Timestamp dtSaida;
+
+	@Column(name = "in_qnt_saida")
+	private Integer qnt_saida;
 
 	@Column(name = "db_valor_consumido")
 	private Double valor_consumido;
-	
-	@Column(name = "dt_saida")
-	private Timestamp dtSaida;
-	
+
+	@Column(name = "dt_mes_saida")
+	private String mes_saida;
+
 	// bi-directional many-to-one association to Material
 	@ManyToOne
 	@JoinColumn(name = "id_material")
-	private Material tbMaterial;	
-	
+	private Material tbMaterial;
+
 	public Relatorio() {
-	}
-	
-	public String getMes_saida() {
-		return mes_saida;
-	}
-
-	public void setMes_saida(String mes_saida) {
-		this.mes_saida = mes_saida;
-	}
-
-	public Double getValor_consumido() {
-		return valor_consumido;
-	}
-
-	public void setValor_consumido(Double valor_consumido) {
-		this.valor_consumido = valor_consumido;
 	}
 
 	public Integer getIdRelatorio() {
-		return this.idRelatorio;
+		return idRelatorio;
 	}
 
 	public void setIdRelatorio(Integer idRelatorio) {
@@ -78,6 +62,22 @@ public class Relatorio implements Serializable {
 
 	public void setIdMaterial(Integer idMaterial) {
 		this.idMaterial = idMaterial;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Double getPrecoMedio() {
+		return precoMedio;
+	}
+
+	public void setPrecoMedio(Double precoMedio) {
+		this.precoMedio = precoMedio;
 	}
 
 	public Timestamp getDtSaida() {
@@ -96,20 +96,20 @@ public class Relatorio implements Serializable {
 		this.qnt_saida = qnt_saida;
 	}
 
-	public Double getPrecoMedio() {
-		return precoMedio;
+	public Double getValor_consumido() {
+		return valor_consumido;
 	}
 
-	public void setPrecoMedio(Double precoMedio) {
-		this.precoMedio = precoMedio;
+	public void setValor_consumido(Double valor_consumido) {
+		this.valor_consumido = valor_consumido;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getMes_saida() {
+		return mes_saida;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setMes_saida(String mes_saida) {
+		this.mes_saida = mes_saida;
 	}
 
 	public Material getTbMaterial() {
@@ -122,10 +122,9 @@ public class Relatorio implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Relatorio [idRelatorio=" + idRelatorio + ", idMaterial=" + idMaterial + ", dtSaida=" + dtSaida
-				+ ", qnt_saida=" + qnt_saida + ", precoMedio=" + precoMedio + ", descricao=" + descricao
-				+ ", mes_saida=" + mes_saida + ", valor_consumido=" + valor_consumido + ", tbMaterial=" + tbMaterial
-				+ "]";
+		return "Relatorio [idRelatorio=" + idRelatorio + ", idMaterial=" + idMaterial + ", descricao=" + descricao
+				+ ", precoMedio=" + precoMedio + ", dtSaida=" + dtSaida + ", qnt_saida=" + qnt_saida
+				+ ", valor_consumido=" + valor_consumido + ", mes_saida=" + mes_saida + "]";
 	}
 
 }

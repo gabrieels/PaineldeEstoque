@@ -2,10 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * The persistent class for the tb_material database table.
@@ -24,31 +21,91 @@ public class Material implements Serializable {
 
 	@Column(name="cv_descricao")
 	private String descricao;
+	
+	@Column(name="und_material")
+	private String unidade;
+	
+	@Column(name="tp_material")
+	private String tipo_material;
 
 	@Column(name="cv_familia")
 	private String familia;
 
+	@Column(name="nu_qnt_minima")
+	private Integer qnt_minima;
+	
 	@Column(name="db_preco_medio")
 	private double preco_medio;
 
-	@Column(name="dt_vencimento")
-	private Timestamp vencimento;
+	public Integer getIdMaterial() {
+		return idMaterial;
+	}
 
-	@Column(name="nu_qnt_estoque")
-	private Integer qnt_estoque;
+	public void setIdMaterial(Integer idMaterial) {
+		this.idMaterial = idMaterial;
+	}
 
-	@Column(name="nu_qnt_minima")
-	private Integer qnt_minima;
+	public String getDescricao() {
+		return descricao;
+	}
 
-	@Column(name="tp_material")
-	private String tipo_material;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-	@Column(name="und_material")
-	private String unidade;
+	public String getUnidade() {
+		return unidade;
+	}
+
+	public void setUnidade(String unidade) {
+		this.unidade = unidade;
+	}
+
+	public String getTipoMaterial() {
+		return tipo_material;
+	}
+
+	public void setTipoMaterial(String tipo_material) {
+		this.tipo_material = tipo_material;
+	}
+
+	public String getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(String familia) {
+		this.familia = familia;
+	}
+
+	public Integer getQntMinima() {
+		return qnt_minima;
+	}
+
+	public void setQntMinima(Integer qnt_minima) {
+		this.qnt_minima = qnt_minima;
+	}
+
+	public double getPrecoMedio() {
+		return preco_medio;
+	}
+
+	public void setPrecoMedio(double preco_medio) {
+		this.preco_medio = preco_medio;
+	}
+
+	@Override
+	public String toString() {
+		return "Material [idMaterial=" + idMaterial + ", descricao=" + descricao + ", unidade=" + unidade
+				+ ", tipo_material=" + tipo_material + ", familia=" + familia + ", qnt_minima=" + qnt_minima
+				+ ", preco_medio=" + preco_medio + "]";
+	}
+
+	public Material() {
+	}
 
 	//bi-directional many-to-one association to CurvaAbc
 	@OneToMany(mappedBy="tbMaterial")
-	private List<CurvaAbc> tbCurvaAbcs = new ArrayList<>();
+	private List<CurvaAbc> tbCurvaAbcs;
 
 	//bi-directional many-to-one association to Indicador
 	@OneToMany(mappedBy="tbMaterial")
@@ -57,81 +114,6 @@ public class Material implements Serializable {
 	//bi-directional many-to-one association to Relatorio
 	@OneToMany(mappedBy="tbMaterial")
 	private List<Relatorio> tbRelatorios;
-
-	public Material() {
-	}
-
-	public Integer getIdMaterial() {
-		return this.idMaterial;
-	}
-
-	public void setIdMaterial(Integer idMaterial) {
-		this.idMaterial = idMaterial;
-	}
-
-	public String getDescricao() {
-		return this.descricao;
-	}
-
-	public void setDescricao(String cvDescricao) {
-		this.descricao = cvDescricao;
-	}
-
-	public String getFamilia() {
-		return this.familia;
-	}
-
-	public void setFamilia(String familia) {
-		this.familia = familia;
-	}
-
-	public double getPrecoMedio() {
-		return this.preco_medio;
-	}
-
-	public void setPrecoMedio(double preco_medio) {
-		this.preco_medio = preco_medio;
-	}
-
-	public Timestamp getVencimento() {
-		return this.vencimento;
-	}
-
-	public void setVencimento(Timestamp vencimento) {
-		this.vencimento = vencimento;
-	}
-
-	public Integer getNuQntEstoque() {
-		return this.qnt_estoque;
-	}
-
-	public void setQntEstoque(Integer qnt_estoque) {
-		this.qnt_estoque = qnt_estoque;
-	}
-
-	public Integer getNuQntMinima() {
-		return this.qnt_minima;
-	}
-
-	public void setQntMinima(Integer qnt_minima) {
-		this.qnt_minima = qnt_minima;
-	}
-
-	public String getMaterial() {
-		return this.tipo_material;
-	}
-
-	public void setTipoMaterial(String tipo_material) {
-		this.tipo_material = tipo_material;
-	}
-
-	public String getUnidade() {
-		return this.unidade;
-	}
-
-	public void setUnidade(String unidade) {
-		this.unidade = unidade;
-	}
 
 	public List<CurvaAbc> getTbCurvaAbcs() {
 		return this.tbCurvaAbcs;
@@ -146,15 +128,6 @@ public class Material implements Serializable {
 		tbCurvaAbc.setTbMaterial(this);
 
 		return tbCurvaAbc;
-	}
-
-	@Override
-	public String toString() {
-		return "Material [idMaterial=" + idMaterial + ", descricao=" + descricao + ", familia=" + familia
-				+ ", preco_medio=" + preco_medio + ", vencimento=" + vencimento + ", qnt_estoque=" + qnt_estoque
-				+ ", qnt_minima=" + qnt_minima + ", tipo_material=" + tipo_material + ", unidade=" + unidade
-				+ ", tbCurvaAbcs=" + tbCurvaAbcs + ", tbIndicadors=" + tbIndicadors + ", tbRelatorios=" + tbRelatorios
-				+ "]";
 	}
 
 	public CurvaAbc removeTbCurvaAbc(CurvaAbc tbCurvaAbc) {
