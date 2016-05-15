@@ -40,7 +40,7 @@ public class RelatorioController implements Serializable {
 		lineModel.setTitle(obterAno());
 		lineModel.setLegendPosition("e");
 		lineModel.setShowPointLabels(true);
-		lineModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+		lineModel.getAxes().put(AxisType.X, new CategoryAxis("Meses"));
 
 		yAxis = lineModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Consumo");

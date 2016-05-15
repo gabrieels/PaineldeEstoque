@@ -9,41 +9,37 @@
 	<link rel="shortcut icon" href="pe.ico" />
 </h:head>
 <h:body>
-	<!-- Grafico da Curva ABC -->	
 	<h:form>
 		<p:growl id="growl" showDetail="true" />
+
 		<h:panelGrid style="position: relative">
+
+			<!-- Grafico da Curva ABC -->
 			<p:panel header="Curva ABC" style="float: left">
 				<p:chart type="pie" model="#{curvaAbcController.pieModel}"
 					style="width:450px;height:300px">
 				</p:chart>
-			
 			</p:panel>
-
-			<!--  <p:commandButton value="Salvar" disabled="false" image="ui-icon-disk"/> -->
 
 			<!-- Grafico dos Indicadores -->
 			<p:panel header="Indicadores" style="float: right;">
-				<div align="right">
-					<a href="#"><img src="src/Imagens/exibirdetalhes.jpg" /></a>
-				</div>
-				<p:chart type="metergauge" model="#{indicadorController.meterGaugeModel}"
+				<p:chart type="metergauge"
+					model="#{indicadorController.meterGaugeModel}"
 					style="width:450px;height:300px">
 				</p:chart>
 			</p:panel>
 
 		</h:panelGrid>
 
-		<!-- Grafico do Relatório Mensal -->
-		<div align="center">
-			<h:panelGrid style="margin-top:51px; width:80%">
-				<p:panel header="Relatório Mensal">
-					<!--Grafico do Relatorio Mensal -->
-					<p:chart type="line" model="#{relatorioController.lineModel}"
-						style="height:300px;" />
-				</p:panel>
-			</h:panelGrid>
-		</div>
+		<h:panelGrid style="width:80%">
+
+			<!--Grafico do Relatorio Mensal -->
+			<p:panel header="Relatório Mensal">
+				<p:chart type="line" model="#{relatorioController.lineModel}"
+					style="height:300px;" />
+			</p:panel>
+
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>
