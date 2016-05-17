@@ -20,21 +20,24 @@ public class CurvaAbc implements Serializable {
 
 	@Column(name = "id_material")
 	private Integer idMaterial;
+	
+	@Column(name = "cv_descricao")
+	private String Descricao;
 
 	@Column(name = "cv_classificacao")
 	private String Classificacao;
 
-	@Column(name = "db_custo_anual")
-	private double dbCustoAnual;
+	@Column(name = "db_percentual")
+	private double percentual;
 
-	@Column(name = "per_anual")
-	private double perAnual;
-
-	@Column(name = "db_acumulado")
-	private double dbAcumulado;
-
-	@Column(name = "per_acumulado")
+	@Column(name = "db_per_acumulado")
 	private double perAcumulado;
+
+	@Column(name = "db_valor_consumido")
+	private double valorConsumido;
+
+	@Column(name = "in_qnt_saida")
+	private double qntSaida;
 
 	// bi-directional many-to-one association to Material
 	@ManyToOne
@@ -60,6 +63,14 @@ public class CurvaAbc implements Serializable {
 		this.idMaterial = idMaterial;
 	}
 
+	public String getDescricao() {
+		return Descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		Descricao = descricao;
+	}
+
 	public String getClassificacao() {
 		return Classificacao;
 	}
@@ -68,28 +79,12 @@ public class CurvaAbc implements Serializable {
 		Classificacao = classificacao;
 	}
 
-	public double getDbCustoAnual() {
-		return dbCustoAnual;
+	public double getPercentual() {
+		return percentual;
 	}
 
-	public void setDbCustoAnual(double dbCustoAnual) {
-		this.dbCustoAnual = dbCustoAnual;
-	}
-
-	public double getPerAnual() {
-		return perAnual;
-	}
-
-	public void setPerAnual(double perAnual) {
-		this.perAnual = perAnual;
-	}
-
-	public double getDbAcumulado() {
-		return dbAcumulado;
-	}
-
-	public void setDbAcumulado(double dbAcumulado) {
-		this.dbAcumulado = dbAcumulado;
+	public void setPercentual(double percentual) {
+		this.percentual = percentual;
 	}
 
 	public double getPerAcumulado() {
@@ -98,6 +93,22 @@ public class CurvaAbc implements Serializable {
 
 	public void setPerAcumulado(double perAcumulado) {
 		this.perAcumulado = perAcumulado;
+	}
+
+	public double getValorConsumido() {
+		return valorConsumido;
+	}
+
+	public void setValorConsumido(double valorConsumido) {
+		this.valorConsumido = valorConsumido;
+	}
+
+	public double getQntSaida() {
+		return qntSaida;
+	}
+
+	public void setQntSaida(double qntSaida) {
+		this.qntSaida = qntSaida;
 	}
 
 	public Material getTbMaterial() {
@@ -110,9 +121,9 @@ public class CurvaAbc implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CurvaAbc [idCurvaAbc=" + idCurvaAbc + ", idMaterial=" + idMaterial + ", Classificacao=" + Classificacao
-				+ ", dbCustoAnual=" + dbCustoAnual + ", perAnual=" + perAnual + ", dbAcumulado=" + dbAcumulado
-				+ ", perAcumulado=" + perAcumulado + "]";
+		return "CurvaAbc [idCurvaAbc=" + idCurvaAbc + ", idMaterial=" + idMaterial + ", Descricao=" + Descricao
+				+ ", Classificacao=" + Classificacao + ", percentual=" + percentual + ", perAcumulado=" + perAcumulado
+				+ ", valorConsumido=" + valorConsumido + ", qntSaida=" + qntSaida + "]";
 	}
 
 }

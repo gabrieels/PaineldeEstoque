@@ -5,41 +5,77 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Painel de Estoque</title>
-	<link rel="shortcut icon" href="pe.ico" />
+	<script src="jquery/jquery-2.1.4.min.js"></script>
 </h:head>
-<h:body>
-	<h:form>
-		<p:growl id="growl" showDetail="true" />
+<f:view>
+	<h:form prependId="false">
+		<p/>
+		<br/>
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">
+					<!-- Grafico da Curva ABC -->
+					<p:panel header="Curva ABC">
 
-		<h:panelGrid style="position: relative">
+						<p:chart type="pie" model="#{curvaAbcController.pieModel}"
+							onclick="PF('dlg1').show();" style="height:300px">
 
-			<!-- Grafico da Curva ABC -->
-			<p:panel header="Curva ABC" style="float: left">
-				<p:chart type="pie" model="#{curvaAbcController.pieModel}"
-					style="width:450px;height:300px">
-				</p:chart>
-			</p:panel>
+							<p:ajax event="itemSelect"
+								listener="#{curvaAbcController.listener}" process="@this"
+								update="dataTable"></p:ajax>
+						</p:chart>
 
-			<!-- Grafico dos Indicadores -->
-			<p:panel header="Indicadores" style="float: right;">
-				<p:chart type="metergauge"
-					model="#{indicadorController.meterGaugeModel}"
-					style="width:450px;height:300px">
-				</p:chart>
-			</p:panel>
+					</p:panel>
+				</div>
 
-		</h:panelGrid>
+				<div class="ui-grid-col-6">
+					<!-- Grafico dos Indicadores -->
+					<p:panel header="Indicadores">
+						<p:chart type="metergauge"
+							model="#{indicadorController.meterGaugeModel}"
+							style=";height:300px">
+						</p:chart>
+					</p:panel>
+				</div>
+			</div>
+		</div>
+		<p />
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<p:panel header="Relatório Mensal">
+						<p:chart type="line" model="#{relatorioController.lineModel}"
+							style="height:300px;" />
+					</p:panel>
+				</div>
+			</div>
+		</div>
 
-		<h:panelGrid style="width:80%">
+		<p />
 
-			<!--Grafico do Relatorio Mensal -->
-			<p:panel header="Relatório Mensal">
-				<p:chart type="line" model="#{relatorioController.lineModel}"
-					style="height:300px;" />
-			</p:panel>
 
-		</h:panelGrid>
+		<p:dataTable id="dataTable"
+			value="#{curvaAbcController.selectedCurvaAbc}" var="user" border="1">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{user.descricao}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Classificação" />
+				</f:facet>
+				<h:outputText value="#{user.classificacao}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Status" />
+				</f:facet>
+				<h:outputText value="#{user.percentual}%" />
+			</p:column>
+		</p:dataTable>
+
 	</h:form>
-</h:body>
+</f:view>
 </html>

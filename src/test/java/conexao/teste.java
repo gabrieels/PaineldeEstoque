@@ -1,5 +1,6 @@
 package conexao;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.MaterialDAO;
@@ -16,12 +17,40 @@ public class teste {
 
 	public static void main(String[] args) {
 		// testGerarIndicador();
-		 testGerarRelatorio();
-		// testGerarCurvaAbc();
+		// testGerarRelatorio();
+		testGerarCurvaAbc();
 		// testBuscarTodos();
 		//gerarRelatorioporMes();
 		//System.out.println(truncaMax(x));
+		//doubleas(121.123456);
+		//System.out.println(casas2(0.0168));
+	
+		
+		
 
+	}
+	
+	private static void doubleas(Double r) {
+		DecimalFormat formato = new DecimalFormat("#.##");
+		String s =formato.format(r);
+		System.out.println(s);
+		
+		
+		r = Double.valueOf(s).doubleValue();
+		//r = Double.valueOf(formato.format(r));
+
+		System.out.println(r);
+
+	}
+	
+	public static double casas2(double v1){
+		
+		int v2 = (int)v1; // parte antes da virgula
+		double v3 = v1-v2; // parte apos  a virgula
+		int v4 = (int)(v3*100); // obtem a 2 casa decimas apos a virgula
+		double v5 = v2+((double)v4/100);
+		
+		return v5;
 	}
 
 	private static void testBuscarTodos() {
