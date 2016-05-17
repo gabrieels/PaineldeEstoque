@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>Painel de Estoque 1.0</title>
+		<link rel="shortcut icon" href="pe.ico" />
+	</f:facet>
+
+	<f:facet name="middle">
+		<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+		<h:outputStylesheet name="css/dashboard.css" />
+		<h:outputScript name="bootstrap/js/bootstrap.js" />
+	</f:facet>
+
+	<f:facet name="last" />
+	<script src="jquery/jquery-2.1.4.min.js">
+        $a = jQuery.noConflict();
+        $a(document).ready(function() {
+            var heightWindow = $a(window).height();
+            var heightBody   = document.body.clientHeight;
+            if(heightWindow > heightBody){
+                $a("#footer").css('position', 'fixed');
+                $a("#footer").css('bottom', '0');
+            }                
+        });
+    </script>
+</h:head>
+<h:body>
+	<br />
+	<br />
+	<p>
+		<ui:include src="header.xhtml" />
+	</p>
+
+	<h:form>
+		<img src="Contatos.png" />
+	</h:form>
+	<br />
+	<div align="center">
+		<a href="main.jsf">
+			<button>Voltar</button>
+		</a>
+
+	</div>
+	<div id="footer"
+		style="padding-top: 30px; margin-top: 90px; width: 100%; background-color: #EEEEEE;"
+		role="footer">
+		<ui:insert name="nav_footer">
+			<ui:include src="footer.xhtml" />
+		</ui:insert>
+	</div>
+</h:body>
+
+</html>
